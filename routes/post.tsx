@@ -3,24 +3,22 @@
 import { RouteConfig, RouteContext } from "fresh/server.ts";
 import { Head } from "fresh/runtime.ts";
 import { getPostById } from "util/post.ts";
+import Post from "components/post.tsx";
 
-export default async function Post(req: Request, ctx: RouteContext) {
+export default async function PostPage(req: Request, ctx: RouteContext) {
   const month = ctx.params[0];
   const id = ctx.params[0] + ctx.params[1];
   const post = await getPostById(id);
   if (!post) {
     return <div>404 ({id})</div>;
   }
-  const { date, body } = post;
   return (
     <>
       <Head>
         <title>Timeline</title>
       </Head>
       <div class="">
-        {date}
-        <br />
-        {body}
+        <Post post={post} />
       </div>
     </>
   );

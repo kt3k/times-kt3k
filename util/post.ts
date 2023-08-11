@@ -3,7 +3,7 @@
 import { extract } from "std/front_matter/yaml.ts";
 import { join } from "std/path/mod.ts";
 
-type Post = {
+export type Post = {
   date: string;
   body: string;
   id: string;
