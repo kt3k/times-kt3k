@@ -5,9 +5,9 @@ export default function Post(opts: { post: Post }) {
   const { post } = opts;
   return (
     <article>
-      <div class="flex gap-5">
+      <div class="flex gap-5 px-5">
         <div class="flex-shrink-0">
-          <img class="w-10 h-10 rounded-full" src="https://kt3k.org/kt3k.jpg" />
+          <img class="w-10 h-10 rounded-full" src="/kt3k.jpg" />
         </div>
         <section>
           <header class="flex gap-2 text-sm">

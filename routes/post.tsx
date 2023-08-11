@@ -5,8 +5,7 @@ import { Head } from "fresh/runtime.ts";
 import { getPostById } from "util/post.ts";
 import Post from "components/post.tsx";
 
-export default async function PostPage(req: Request, ctx: RouteContext) {
-  const month = ctx.params[0];
+export default async function PostPage(_req: Request, ctx: RouteContext) {
   const id = ctx.params[0] + ctx.params[1];
   const post = await getPostById(id);
   if (!post) {
@@ -17,7 +16,7 @@ export default async function PostPage(req: Request, ctx: RouteContext) {
       <Head>
         <title>Timeline</title>
       </Head>
-      <div class="">
+      <div class="pt-5">
         <Post post={post} />
       </div>
     </>
