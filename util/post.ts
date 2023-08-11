@@ -2,9 +2,10 @@
 
 import { extract } from "std/front_matter/yaml.ts";
 import { join } from "std/path/mod.ts";
+import { Temporal } from "esm/@js-temporal/polyfill@0.4.4";
 
 export type Post = {
-  date: string;
+  date: Temporal.ZonedDateTime;
   body: string;
   id: string;
 };
@@ -28,7 +29,7 @@ export async function getPost(
     const text = await Deno.readTextFile(`tl/${month}/${file}.md`);
     const { attrs, body } = extract<{ date: string }>(text);
     return {
-      date: attrs.date,
+      date: Temporal.ZonedDateTime.from(attrs.date),
       body,
       id: `${month}${file}`,
     };
@@ -44,6 +45,6 @@ export async function getPostsForMonth(month: string): Promise<Post[]> {
   }
   const posts_ = await Promise.all(promises);
   const posts = posts_.filter((post) => post !== null) as Post[];
-  posts.sort((a, b) => a.date > b.date ? -1 : 1);
+  posts.sort((a, b) => a.date.epochSeconds > b.date.epochSeconds ? -1 : 1);
   return posts;
 }
