@@ -22,7 +22,7 @@ export default function Post(opts: { post: Post }) {
               </a>
             </span>
           </header>
-          <main>{post.body}</main>
+          <main class="break-all">{post.body}</main>
         </section>
       </div>
       <hr class="mt-3 border-gray-700" />
