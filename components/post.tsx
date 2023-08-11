@@ -11,7 +11,7 @@ export default function Post(opts: { post: Post }) {
         </div>
         <section>
           <header class="flex gap-2 text-sm">
-            <span class="font-semibold">Yoshiya Hinosawa</span>
+            <span class="font-semibold">Yoshiya</span>
             <span class="text-gray-400">
               @kt3k・
               <a class="hover:underline" href={`/post/${post.id}`}>
