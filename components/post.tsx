@@ -1,22 +1,26 @@
 // Copyright 2023 Yoshiya Hinosawa. All rights reserved. MIT license.
 
-import { Post } from "util/post.ts";
+import { authors, Post } from "util/post.ts";
 import { render } from "x/gfm@0.2.5/mod.ts";
 
 export default function Post(opts: { post: Post }) {
   const { post } = opts;
   const html = render(post.body);
+  const img = `/${post.author}.jpg`;
+  const name = authors[post.author] ?? post.author;
   return (
     <article>
       <div class="flex gap-5 px-5">
         <div class="flex-shrink-0">
-          <img class="w-10 h-10 rounded-full" src="/kt3k.jpg" />
+          <img class="w-10 h-10 rounded-full" src={img} />
         </div>
         <section>
           <header class="flex gap-2 text-sm">
-            <span class="font-semibold">Yoshiya</span>
+            <span class="font-semibold">
+              {name}
+            </span>
             <span class="text-gray-400">
-              @kt3k・
+              @{post.author}・
               <a class="hover:underline" href={`/post/${post.id}`}>
                 {post.date.toLocaleString("en-US", {
                   dateStyle: "medium",

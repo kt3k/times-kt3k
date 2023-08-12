@@ -3,11 +3,15 @@
 import { extract } from "std/front_matter/yaml.ts";
 import { join } from "std/path/mod.ts";
 import { Temporal } from "esm/@js-temporal/polyfill@0.4.4";
+import authors_ from "../authors.json" assert { type: "json" };
+
+export const authors = authors_ as Record<string, string>;
 
 export type Post = {
   date: Temporal.ZonedDateTime;
   body: string;
   id: string;
+  author: string;
 };
 
 export async function getPostById(id: string): Promise<Post | null> {
@@ -27,11 +31,12 @@ export async function getPost(
   }
   try {
     const text = await Deno.readTextFile(`tl/${month}/${file}.md`);
-    const { attrs, body } = extract<{ date: string }>(text);
+    const { attrs, body } = extract<{ date: string; author: string }>(text);
     return {
       date: Temporal.ZonedDateTime.from(attrs.date),
       body,
       id: `${month}${file}`,
+      author: attrs.author,
     };
   } catch {
     return null;

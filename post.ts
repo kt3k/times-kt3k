@@ -2,6 +2,7 @@
 
 import { ensureDir } from "std/fs/ensure_dir.ts";
 import { join } from "std/path/mod.ts";
+import "std/dotenv/load.ts";
 import { Temporal } from "esm/@js-temporal/polyfill@0.4.4";
 import { encode } from "x/bijective_base_n@v0.1.0/mod.ts";
 
