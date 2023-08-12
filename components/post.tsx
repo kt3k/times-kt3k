@@ -12,7 +12,7 @@ export default function Post(opts: { post: Post; permalink?: boolean }) {
   const date = permalink ? formatDate(post.date) : smart(post.date);
   return (
     <article>
-      <div class="flex gap-5 px-5">
+      <div class="flex gap-5 px-4">
         <div class="flex-shrink-0">
           <img class="w-10 h-10 rounded-full" src={img} />
         </div>
@@ -41,7 +41,6 @@ export default function Post(opts: { post: Post; permalink?: boolean }) {
           />
         </section>
       </div>
-      <hr class="mt-3 border-gray-700" />
     </article>
   );
 }

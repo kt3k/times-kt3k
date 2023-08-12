@@ -16,8 +16,19 @@ export default async function PostPage(_req: Request, ctx: RouteContext) {
       <Head>
         <title>Timeline</title>
       </Head>
-      <div class="pt-5">
+      <div class="pt-3 px-4 text-sm text-gray-500">
+        <a class="text-blue-500 hover:underline" href={`/`}>TOP</a> &gt;{" "}
+        <a
+          class="text-blue-500 hover:underline"
+          href={`/post/${ctx.params[0]}`}
+        >
+          {ctx.params[0]}
+        </a>
+      </div>
+      <hr class="mt-3 border-gray-700" />
+      <div class="pt-4">
         <Post post={post} permalink />
+        <hr class="mt-3 border-gray-700" />
       </div>
     </>
   );
