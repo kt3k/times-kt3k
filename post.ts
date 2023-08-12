@@ -14,6 +14,7 @@ Deno.writeTextFileSync(
   file,
   `---
 date: ${n}
+author: ${Deno.env.get("AUTHOR")}
 ---
 ...
 `,

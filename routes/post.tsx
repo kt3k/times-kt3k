@@ -17,7 +17,7 @@ export default async function PostPage(_req: Request, ctx: RouteContext) {
         <title>Timeline</title>
       </Head>
       <div class="pt-5">
-        <Post post={post} />
+        <Post post={post} permalink />
       </div>
     </>
   );

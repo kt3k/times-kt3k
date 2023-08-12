@@ -1,13 +1,15 @@
 // Copyright 2023 Yoshiya Hinosawa. All rights reserved. MIT license.
 
+import { Temporal, type ZonedDateTime } from "esm/@js-temporal/polyfill@0.4.4";
 import { authors, Post } from "util/post.ts";
 import { render } from "x/gfm@0.2.5/mod.ts";
 
-export default function Post(opts: { post: Post }) {
-  const { post } = opts;
+export default function Post(opts: { post: Post; permalink?: boolean }) {
+  const { post, permalink } = opts;
   const html = render(post.body);
   const img = `/${post.author}.jpg`;
   const name = authors[post.author] ?? post.author;
+  const date = permalink ? formatDate(post.date) : smart(post.date);
   return (
     <article>
       <div class="flex gap-5 px-5">
@@ -21,12 +23,13 @@ export default function Post(opts: { post: Post }) {
             </span>
             <span class="text-gray-400">
               @{post.author}・
-              <a class="hover:underline" href={`/post/${post.id}`}>
-                {post.date.toLocaleString("en-US", {
-                  dateStyle: "medium",
-                  timeStyle: "short",
-                })}
-              </a>
+              {permalink
+                ? date
+                : (
+                  <a class="hover:underline" href={`/post/${post.id}`}>
+                    {date}
+                  </a>
+                )}
             </span>
           </header>
           <main
@@ -41,4 +44,32 @@ export default function Post(opts: { post: Post }) {
       <hr class="mt-3 border-gray-700" />
     </article>
   );
+}
+
+function smart(date: ZonedDateTime): string {
+  const d = date.until(Temporal.Now.zonedDateTimeISO());
+  if (d.total("day") > 2) {
+    console.log("hi");
+    return formatDate(date);
+  }
+  if (d.total("day") > 1) {
+    return d.round({ smallestUnit: "day" }).days + "d";
+  }
+  if (d.total("hour") > 1) {
+    return d.round({ smallestUnit: "hour" }).hours + "h";
+  }
+  if (d.total("minute") > 1) {
+    return d.round({ smallestUnit: "minute" }).minutes + "m";
+  }
+  if (d.total("second") > 1) {
+    return d.round({ smallestUnit: "second" }).seconds + "s";
+  }
+  return "now";
+}
+
+function formatDate(date: ZonedDateTime) {
+  return date.toLocaleString("en-US", {
+    dateStyle: "medium",
+    timeStyle: "short",
+  });
 }
