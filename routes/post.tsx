@@ -3,6 +3,7 @@
 import { RouteConfig, RouteContext } from "fresh/server.ts";
 import { Head } from "fresh/runtime.ts";
 import { getPostById } from "util/post.ts";
+import { formatMonthId } from "util/date.ts";
 import Post from "components/post.tsx";
 
 export default async function PostPage(_req: Request, ctx: RouteContext) {
@@ -22,7 +23,7 @@ export default async function PostPage(_req: Request, ctx: RouteContext) {
           class="text-blue-500 hover:underline"
           href={`/post/${ctx.params[0]}`}
         >
-          {ctx.params[0]}
+          {formatMonthId(ctx.params[0])}
         </a>
       </div>
       <hr class="mt-3 border-gray-700" />

@@ -3,6 +3,7 @@
 import { RouteConfig, RouteContext } from "fresh/server.ts";
 import { Head } from "fresh/runtime.ts";
 import { getPostsForMonth } from "util/post.ts";
+import { formatMonthId } from "util/date.ts";
 import Post from "components/post.tsx";
 
 export default async function Month(req: Request, ctx: RouteContext) {
@@ -12,9 +13,9 @@ export default async function Month(req: Request, ctx: RouteContext) {
       <Head>
         <title>Timeline</title>
       </Head>
-      <div class="pt-3 px-4 text-sm text-gray-500">
+      <div class="pt-3 px-4 text-sm text-gray-400">
         <a class="text-blue-500 hover:underline" href={`/`}>TOP</a> &gt;{" "}
-        {ctx.params[0]}
+        {formatMonthId(ctx.params[0])}
       </div>
       <hr class="mt-3 border-gray-700" />
       <div class="">

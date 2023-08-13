@@ -55,7 +55,9 @@ function smart(date: ZonedDateTime): string {
   const d = date.until(Temporal.Now.zonedDateTimeISO());
   if (d.total("day") > 2) {
     console.log("hi");
-    return formatDate(date);
+    return date.toLocaleString("en-US", {
+      dateStyle: "medium",
+    });
   }
   if (d.total("day") > 1) {
     return d.round({ smallestUnit: "day" }).days + "d";
