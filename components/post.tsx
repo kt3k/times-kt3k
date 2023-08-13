@@ -39,7 +39,7 @@ export default function Post(opts: { post: Post; permalink?: boolean }) {
             </span>
           </header>
           <main
-            style="--color-accent-fg: #3b82f6; --color-canvas-default: xx"
+            style="--color-accent-fg: #60a5fa; --color-canvas-default: xx"
             data-color-mode="dark"
             data-dark-theme="dark"
             class="break-all markdown-body"

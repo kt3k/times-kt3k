@@ -14,7 +14,7 @@ export default async function Month(req: Request, ctx: RouteContext) {
         <title>Timeline</title>
       </Head>
       <div class="pt-3 px-4 text-sm text-gray-400">
-        <a class="text-blue-500 hover:underline" href={`/`}>TOP</a> /{" "}
+        <a class="text-blue-400 hover:underline" href={`/`}>TOP</a> /{" "}
         {formatMonthId(ctx.params[0])}
       </div>
       <hr class="mt-3 border-gray-700" />

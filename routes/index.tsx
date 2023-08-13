@@ -19,9 +19,9 @@ export default async function Home(req: Request, ctx: RouteContext) {
       </Head>
       <div class="">
         {posts.map(([month, posts]) => (
-          <div>
+          <>
             <div class="pt-3 px-4 text-sm text-gray-400">
-              <a class="" href={`/${month}`}>
+              <a class="text-blue-400 hover:underline" href={`/${month}`}>
                 {formatMonthId(month)}
               </a>
             </div>
@@ -32,7 +32,7 @@ export default async function Home(req: Request, ctx: RouteContext) {
                 <hr class="mt-3 border-gray-700" />
               </div>
             ))}
-          </div>
+          </>
         ))}
       </div>
     </>
