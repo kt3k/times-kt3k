@@ -57,3 +57,13 @@ export async function getPostsForMonth(month: string): Promise<Post[]> {
   posts.sort((a, b) => a.date.epochSeconds > b.date.epochSeconds ? -1 : 1);
   return posts;
 }
+
+export function getPostsForMonths(
+  months: string[],
+): Promise<[string, Post[]][]> {
+  const posts: Promise<[string, Post[]]>[] = [];
+  for (const month of months.sort().reverse()) {
+    posts.push(getPostsForMonth(month).then((posts) => [month, posts]));
+  }
+  return Promise.all(posts);
+}
