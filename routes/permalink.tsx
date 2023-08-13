@@ -6,7 +6,7 @@ import { getPostById } from "util/post.ts";
 import { formatMonthId } from "util/date.ts";
 import Post from "components/post.tsx";
 
-export default async function PostPage(_req: Request, ctx: RouteContext) {
+export default async function Permalink(_req: Request, ctx: RouteContext) {
   const id = ctx.params[0] + ctx.params[1];
   const post = await getPostById(id);
   if (!post) {
@@ -18,10 +18,10 @@ export default async function PostPage(_req: Request, ctx: RouteContext) {
         <title>Timeline</title>
       </Head>
       <div class="pt-3 px-4 text-sm text-gray-500">
-        <a class="text-blue-500 hover:underline" href={`/`}>TOP</a> &gt;{" "}
+        <a class="text-blue-500 hover:underline" href={`/`}>TOP</a> /{" "}
         <a
           class="text-blue-500 hover:underline"
-          href={`/post/${ctx.params[0]}`}
+          href={`/${ctx.params[0]}`}
         >
           {formatMonthId(ctx.params[0])}
         </a>
@@ -36,5 +36,5 @@ export default async function PostPage(_req: Request, ctx: RouteContext) {
 }
 
 export const config: RouteConfig = {
-  routeOverride: "/post/(\\d{6})([a-z]+)",
+  routeOverride: "/(\\d{6})([a-z]+)",
 };

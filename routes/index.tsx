@@ -21,7 +21,7 @@ export default async function Home(req: Request, ctx: RouteContext) {
         {posts.map(([month, posts]) => (
           <div>
             <div class="pt-3 px-4 text-sm text-gray-400">
-              <a class="hover:underline" href={`/post/${month}`}>
+              <a class="" href={`/${month}`}>
                 {formatMonthId(month)}
               </a>
             </div>

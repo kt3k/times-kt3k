@@ -32,7 +32,7 @@ export default function Post(opts: { post: Post; permalink?: boolean }) {
               {permalink
                 ? date
                 : (
-                  <a class="hover:underline" href={`/post/${post.id}`}>
+                  <a class="hover:underline" href={`/${post.id}`}>
                     {date}
                   </a>
                 )}
