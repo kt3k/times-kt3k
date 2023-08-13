@@ -5,6 +5,7 @@ import { Head } from "fresh/runtime.ts";
 import { getPostById } from "util/post.ts";
 import { formatMonthId } from "util/date.ts";
 import Post from "components/post.tsx";
+import Footer from "components/footer.tsx";
 
 export default async function Permalink(_req: Request, ctx: RouteContext) {
   const id = ctx.params[0] + ctx.params[1];
@@ -31,6 +32,7 @@ export default async function Permalink(_req: Request, ctx: RouteContext) {
         <Post post={post} permalink />
         <hr class="mt-3 border-gray-700" />
       </div>
+      <Footer />
     </>
   );
 }

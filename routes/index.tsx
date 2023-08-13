@@ -5,6 +5,7 @@ import { Head } from "fresh/runtime.ts";
 import { getPostsForMonths } from "util/post.ts";
 import { formatMonthId } from "util/date.ts";
 import Post from "components/post.tsx";
+import Footer from "components/footer.tsx";
 
 export default async function Home(req: Request, ctx: RouteContext) {
   const months = [];
@@ -38,6 +39,7 @@ export default async function Home(req: Request, ctx: RouteContext) {
           </>
         ))}
       </div>
+      <Footer />
     </>
   );
 }

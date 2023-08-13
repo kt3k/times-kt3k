@@ -54,7 +54,6 @@ export default function Post(opts: { post: Post; permalink?: boolean }) {
 function smart(date: ZonedDateTime): string {
   const d = date.until(Temporal.Now.zonedDateTimeISO());
   if (d.total("day") > 2) {
-    console.log("hi");
     return date.toLocaleString("en-US", {
       dateStyle: "medium",
     });
