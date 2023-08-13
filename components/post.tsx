@@ -8,7 +8,7 @@ export default function Post(opts: { post: Post; permalink?: boolean }) {
   const { post, permalink } = opts;
   const html = render(post.body);
   const img = `/${post.author}.jpg`;
-  const name = authors[post.author] ?? post.author;
+  const author = authors[post.author] ?? post.author;
   const date = permalink ? formatDate(post.date) : smart(post.date);
   return (
     <article>
@@ -19,10 +19,16 @@ export default function Post(opts: { post: Post; permalink?: boolean }) {
         <section>
           <header class="flex gap-2 text-sm">
             <span class="font-semibold">
-              {name}
+              {author.name}
             </span>
             <span class="text-gray-400">
-              @{post.author}・
+              {author.url
+                ? (
+                  <a class="hover:underline" href={author.url}>
+                    @{post.author}
+                  </a>
+                )
+                : `@${post.author}`}・
               {permalink
                 ? date
                 : (

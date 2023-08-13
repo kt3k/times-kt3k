@@ -5,7 +5,11 @@ import { join } from "std/path/mod.ts";
 import { Temporal } from "esm/@js-temporal/polyfill@0.4.4";
 import authors_ from "../authors.json" assert { type: "json" };
 
-export const authors = authors_ as Record<string, string>;
+type Author = {
+  name: string;
+  url?: string;
+};
+export const authors = authors_ as Record<string, Author>;
 
 export type Post = {
   date: Temporal.ZonedDateTime;

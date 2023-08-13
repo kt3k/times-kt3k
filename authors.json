@@ -1,3 +1,9 @@
 {
-  "kt3k": "Yoshiya"
+  "kt3k": {
+    "name": "Yoshiya",
+    "url": "http://kt3k.org"
+  },
+  "iyoring": {
+    "name": "あずきちゃん"
+  }
 }

@@ -6,10 +6,15 @@ import "std/dotenv/load.ts";
 import { Temporal } from "esm/@js-temporal/polyfill@0.4.4";
 import { encode } from "x/bijective_base_n@v0.1.0/mod.ts";
 
+const alphabet = "abcdefghjkmnpqrstuvwxyz";
+
 const n = Temporal.Now.zonedDateTimeISO();
 const dir = `tl/${n.year}${n.month.toString().padStart(2, "0")}`;
 await ensureDir(dir);
-const file = join(dir, `${encode([...Deno.readDirSync(dir)].length + 1)}.md`);
+const file = join(
+  dir,
+  `${encode([...Deno.readDirSync(dir)].length + 1, alphabet)}.md`,
+);
 Deno.writeTextFileSync(
   file,
   `---
