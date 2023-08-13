@@ -17,10 +17,10 @@ export default async function Permalink(_req: Request, ctx: RouteContext) {
       <Head>
         <title>Timeline</title>
       </Head>
-      <div class="pt-3 px-4 text-sm text-gray-500">
-        <a class="text-blue-400 hover:underline" href={`/`}>TOP</a> /{" "}
+      <div class="pt-3 px-4 text-sm text-gray-400">
+        <a class="hover:underline" href={`/`}>TOP</a> /{" "}
         <a
-          class="text-blue-400 hover:underline"
+          class="hover:underline"
           href={`/${ctx.params[0]}`}
         >
           {formatMonthId(ctx.params[0])}

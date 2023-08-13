@@ -18,14 +18,17 @@ export default async function Home(req: Request, ctx: RouteContext) {
         <title>Timeline</title>
       </Head>
       <div class="">
+        <div class="pt-3 px-7">
+          Timeline of @kt3k
+        </div>
+        <hr class="mt-3 border-gray-700" />
         {posts.map(([month, posts]) => (
           <>
             <div class="pt-3 px-4 text-sm text-gray-400">
-              <a class="text-blue-400 hover:underline" href={`/${month}`}>
+              <a class="hover:underline" href={`/${month}`}>
                 {formatMonthId(month)}
               </a>
             </div>
-            <hr class="mt-3 border-gray-700" />
             {posts.map((post) => (
               <div class="mt-4">
                 <Post post={post} />
