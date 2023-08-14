@@ -33,7 +33,7 @@ export default async function Permalink(_req: Request, ctx: RouteContext) {
         <meta name="description" content={description} />
       </Head>
       <div class="pt-3 px-4 text-sm text-gray-400">
-        <a class="hover:underline" href={`/`}>TOP</a> /{" "}
+        <a class="hover:underline" href={`/`}>Home</a> /{" "}
         <a
           class="hover:underline"
           href={`/${ctx.params[0]}`}
