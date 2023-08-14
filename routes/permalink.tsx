@@ -16,18 +16,17 @@ export default async function Permalink(_req: Request, ctx: RouteContext) {
   const text = post.html.replace(/<[^>]+>/g, "");
   const description = `${post.author}: "${text}"`;
   const title = "Timeline of @kt3k";
+  const ogImage = `https://times.kt3k.org/og-image.png`;
   return (
     <>
       <Head>
         <title>{description} / Timeline of @kt3k</title>
         <meta property="og:title" content={title} />
-        <meta
-          property="og:image"
-          content={`https://times.kt3k.org/og-image.png`}
-        />
+        <meta property="og:image" content={ogImage} />
         <meta property="og:image:width" content="800" />
         <meta property="og:image:height" content="418" />
-        <meta property="twitter:card" content="summary" />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:image" content={ogImage} />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
         <meta property="og:description" content={description} />
