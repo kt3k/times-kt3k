@@ -20,6 +20,10 @@ export default async function Permalink(_req: Request, ctx: RouteContext) {
       <Head>
         <title>{description} / Timeline of @kt3k</title>
         <meta property="og:title" content="Timeline of @kt3k" />
+        <meta
+          property="og:image"
+          content={`https://times.kt3k.org/${post.author}.jpg`}
+        />
         <meta property="og:description" content={description} />
         <meta name="description" content={description} />
       </Head>
