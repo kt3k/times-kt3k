@@ -13,10 +13,11 @@ export default async function Permalink(_req: Request, ctx: RouteContext) {
   if (!post) {
     return <div>404 ({id})</div>;
   }
+  const text = post.html.replace(/<[^>]+>/g, "");
   return (
     <>
       <Head>
-        <title>Timeline</title>
+        <title>{post.author}: "{text}" / Timeline of @kt3k</title>
       </Head>
       <div class="pt-3 px-4 text-sm text-gray-400">
         <a class="hover:underline" href={`/`}>TOP</a> /{" "}

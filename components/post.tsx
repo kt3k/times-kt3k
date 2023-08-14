@@ -6,7 +6,6 @@ import { render } from "x/gfm@0.2.5/mod.ts";
 
 export default function Post(opts: { post: Post; permalink?: boolean }) {
   const { post, permalink } = opts;
-  const html = render(post.body);
   const img = `/${post.author}.jpg`;
   const author = authors[post.author] ?? post.author;
   const date = permalink ? formatDate(post.date) : smart(post.date);
@@ -43,7 +42,7 @@ export default function Post(opts: { post: Post; permalink?: boolean }) {
             data-color-mode="dark"
             data-dark-theme="dark"
             class="break-all markdown-body"
-            dangerouslySetInnerHTML={{ __html: html }}
+            dangerouslySetInnerHTML={{ __html: post.html }}
           />
         </section>
       </div>
