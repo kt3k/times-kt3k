@@ -9,14 +9,14 @@ import Footer from "components/footer.tsx";
 
 export default async function Month(req: Request, ctx: RouteContext) {
   const posts = await getPostsForMonth(ctx.params[0]);
+  const month = formatMonthId(ctx.params[0]);
   return (
     <>
       <Head>
-        <title>Timeline</title>
+        <title>{month} / Timeline of @kt3k</title>
       </Head>
       <div class="pt-3 px-4 text-sm text-gray-400">
-        <a class="hover:underline" href={`/`}>TOP</a> /{" "}
-        {formatMonthId(ctx.params[0])}
+        <a class="hover:underline" href={`/`}>TOP</a> / {month}
       </div>
       <hr class="mt-3 border-gray-700" />
       <div class="">

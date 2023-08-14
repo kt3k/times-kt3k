@@ -16,7 +16,7 @@ export default async function Home(req: Request, ctx: RouteContext) {
   return (
     <>
       <Head>
-        <title>Timeline</title>
+        <title>Timeline of @kt3k</title>
       </Head>
       <div class="">
         <div class="pt-3 px-7">
