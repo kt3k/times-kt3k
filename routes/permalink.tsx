@@ -6,6 +6,7 @@ import { getPostById } from "util/post.ts";
 import { formatMonthId } from "util/date.ts";
 import Post from "components/post.tsx";
 import Footer from "components/footer.tsx";
+import { SITE_NAME } from "util/const.ts";
 
 export default async function Permalink(_req: Request, ctx: RouteContext) {
   const id = ctx.params[0] + ctx.params[1];
@@ -15,19 +16,18 @@ export default async function Permalink(_req: Request, ctx: RouteContext) {
   }
   const text = post.html.replace(/<[^>]+>/g, "").trim();
   const description = `${post.author}: "${text}"`;
-  const title = "Timeline of @kt3k";
   const ogImage = `https://times.kt3k.org/og-image.png`;
   return (
     <>
       <Head>
-        <title>{description} / Timeline of @kt3k</title>
-        <meta property="og:title" content={title} />
+        <title>{description} / {SITE_NAME}</title>
+        <meta property="og:title" content={SITE_NAME} />
         <meta property="og:image" content={ogImage} />
         <meta property="og:image:width" content="800" />
         <meta property="og:image:height" content="418" />
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:image" content={ogImage} />
-        <meta property="twitter:title" content={title} />
+        <meta property="twitter:title" content={SITE_NAME} />
         <meta property="twitter:description" content={description} />
         <meta property="og:description" content={description} />
         <meta name="description" content={description} />

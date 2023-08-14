@@ -6,6 +6,7 @@ import { getPostsForMonths } from "util/post.ts";
 import { formatMonthId } from "util/date.ts";
 import Post from "components/post.tsx";
 import Footer from "components/footer.tsx";
+import { SITE_NAME } from "util/const.ts";
 
 export default async function Home(req: Request, ctx: RouteContext) {
   const months = [];
@@ -16,12 +17,12 @@ export default async function Home(req: Request, ctx: RouteContext) {
   return (
     <>
       <Head>
-        <title>Timeline of @kt3k</title>
+        <title>{SITE_NAME}</title>
       </Head>
       <div class="">
         <div class="pt-3 px-7">
-          Timeline of{" "}
-          <a class="hover:underline" href="https://kt3k.org">@kt3k</a>
+          #times-
+          <a class="hover:underline" href="https://kt3k.org">kt3k</a>
         </div>
         <hr class="mt-3 border-gray-700" />
         {posts.map(([month, posts]) => (

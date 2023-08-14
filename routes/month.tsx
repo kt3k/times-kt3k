@@ -6,6 +6,7 @@ import { getPostsForMonth } from "util/post.ts";
 import { formatMonthId } from "util/date.ts";
 import Post from "components/post.tsx";
 import Footer from "components/footer.tsx";
+import { SITE_NAME } from "util/const.ts";
 
 export default async function Month(req: Request, ctx: RouteContext) {
   const posts = await getPostsForMonth(ctx.params[0]);
@@ -13,7 +14,7 @@ export default async function Month(req: Request, ctx: RouteContext) {
   return (
     <>
       <Head>
-        <title>{month} / Timeline of @kt3k</title>
+        <title>{month} / {SITE_NAME}</title>
       </Head>
       <div class="pt-3 px-4 text-sm text-gray-400">
         <a class="hover:underline" href={`/`}>TOP</a> / {month}
