@@ -18,6 +18,7 @@ export default async function Permalink(_req: Request, ctx: RouteContext) {
     <>
       <Head>
         <title>{post.author}: "{text}" / Timeline of @kt3k</title>
+        <meta name="description" content={text} />
       </Head>
       <div class="pt-3 px-4 text-sm text-gray-400">
         <a class="hover:underline" href={`/`}>TOP</a> /{" "}
