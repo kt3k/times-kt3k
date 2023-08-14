@@ -13,7 +13,7 @@ export default async function Permalink(_req: Request, ctx: RouteContext) {
   if (!post) {
     return <div>404 ({id})</div>;
   }
-  const text = post.html.replace(/<[^>]+>/g, "");
+  const text = post.html.replace(/<[^>]+>/g, "").trim();
   const description = `${post.author}: "${text}"`;
   const title = "Timeline of @kt3k";
   const ogImage = `https://times.kt3k.org/og-image.png`;
