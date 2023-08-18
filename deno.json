@@ -3,7 +3,7 @@
   "tasks": {
     "start": "deno run -A --watch=static/,routes/ dev.ts",
     "update": "deno run -A -r https://fresh.deno.dev/update .",
-    "p": "deno run -A post.ts"
+    "post": "deno run -A post.ts"
   },
   "lint": {
     "rules": {
