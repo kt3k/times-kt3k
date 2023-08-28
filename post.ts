@@ -4,24 +4,12 @@ import { ensureDir } from "std/fs/ensure_dir.ts";
 import { join } from "std/path/mod.ts";
 import "std/dotenv/load.ts";
 import { Temporal } from "esm/@js-temporal/polyfill@0.4.4";
-import { encode } from "x/bijective_base_n@v0.1.0/mod.ts";
-
-const alphabet = "abcdefghjkmnpqrstuvwxyz";
+import { defaultPost, getNextFileName, getThisMonthId } from "./util/post.ts";
 
 const n = Temporal.Now.zonedDateTimeISO();
-const dir = `tl/${n.year}${n.month.toString().padStart(2, "0")}`;
+const id = getThisMonthId();
+const dir = join("tl", id);
 await ensureDir(dir);
-const file = join(
-  dir,
-  `${encode([...Deno.readDirSync(dir)].length + 1, alphabet)}.md`,
-);
-Deno.writeTextFileSync(
-  file,
-  `---
-date: ${n}
-author: ${Deno.env.get("AUTHOR")}
----
-...
-`,
-);
+const file = join(dir, getNextFileName([...Deno.readDirSync(dir)].length));
+Deno.writeTextFileSync(file, defaultPost(n, Deno.env.get("AUTHOR")!));
 new Deno.Command("code", { args: [file] }).outputSync();

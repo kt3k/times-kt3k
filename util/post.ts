@@ -5,6 +5,9 @@ import { join } from "std/path/mod.ts";
 import { Temporal } from "esm/@js-temporal/polyfill@0.4.4";
 import authors_ from "../authors.json" assert { type: "json" };
 import { render } from "x/gfm@0.2.5/mod.ts";
+import { encode } from "x/bijective_base_n@v0.1.0/mod.ts";
+
+const alphabet = "abcdefghjkmnpqrstuvwxyz";
 
 type Author = {
   name: string;
@@ -71,4 +74,31 @@ export function getPostsForMonths(
     posts.push(getPostsForMonth(month).then((posts) => [month, posts]));
   }
   return Promise.all(posts);
+}
+
+export function getNextFileName(n: number) {
+  return `${encode(n + 1, alphabet)}.md`;
+}
+
+export function getThisMonthId() {
+  const n = Temporal.Now.zonedDateTimeISO();
+  return n.year + n.month.toString().padStart(2, "0");
+}
+
+export function getThisMonthPosts() {
+  const id = getThisMonthId();
+  try {
+    return getPostsForMonth(id);
+  } catch {
+    return [];
+  }
+}
+
+export function defaultPost(n: Temporal.ZonedDateTime, author: string) {
+  return `---
+date: ${n}
+author: ${author}
+---
+...
+`;
 }
