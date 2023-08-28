@@ -61,7 +61,7 @@ export default async function Home(_req: Request, _ctx: RouteContext) {
           ))}
         </>
       ))}
-      <div class="fixed top-0 w-screen md:max-w-xl mx-auto h-[100svh]">
+      <div class="fixed bottom-0 w-screen md:max-w-xl mx-auto h-[100svh]">
         <a
           class="absolute w-[50px] h-[50px] bg-blue-600 flex items-center justify-center rounded-full bottom-5 right-5 shadow-xl shadow-white text-xs font-bold"
           target="_blank"
