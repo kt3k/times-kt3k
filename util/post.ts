@@ -50,7 +50,8 @@ export async function getPost(
       id: `${month}${file}`,
       author: attrs.author,
     };
-  } catch {
+  } catch (e) {
+    console.log(e);
     return null;
   }
 }

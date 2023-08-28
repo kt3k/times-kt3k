@@ -66,9 +66,8 @@ export default async function Home(_req: Request, _ctx: RouteContext) {
           class="absolute pointer-events-auto w-[50px] h-[50px] bg-blue-600 flex items-center justify-center rounded-full bottom-5 right-5 shadow-xl shadow-white text-xs font-bold"
           target="_blank"
           href={`https://github.com/kt3k/times-kt3k/new/main/tl/${thisMonthId}?filename=${nextFileName}&value=${
-            defaultPost(Temporal.Now.zonedDateTimeISO(), "kt3k").replaceAll(
-              "\n",
-              "%0A",
+            encodeURIComponent(
+              defaultPost(Temporal.Now.zonedDateTimeISO(), "kt3k"),
             )
           }`}
         >
