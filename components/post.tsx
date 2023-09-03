@@ -15,7 +15,7 @@ export default function Post(opts: { post: Post; permalink?: boolean }) {
         <div class="flex-shrink-0">
           <img class="w-10 h-10 rounded-full" src={img} />
         </div>
-        <section>
+        <section class="min-w-0">
           <header class="flex gap-2 text-sm">
             <span class="font-semibold">
               {author.name}
