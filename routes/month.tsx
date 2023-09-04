@@ -13,17 +13,18 @@ export default async function Month(req: Request, ctx: RouteContext) {
   const posts = await getPostsForMonth(monthId);
   const month = formatMonthId(monthId);
   const description = `${month} / ${SITE_NAME}}`;
+  const ogImage = `https://times.kt3k.org/${monthId}.png`;
   return (
     <>
       <Head>
         <title>{month} / {SITE_NAME}</title>
         <title>{SITE_NAME}</title>
         <meta property="og:title" content={SITE_NAME} />
-        <meta property="og:image" content={`/${monthId}.png`} />
+        <meta property="og:image" content={ogImage} />
         <meta property="og:image:width" content="800" />
         <meta property="og:image:height" content="418" />
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:image" content={`/${monthId}.png`} />
+        <meta property="twitter:image" content={ogImage} />
         <meta property="twitter:title" content={SITE_NAME} />
         <meta property="twitter:description" content={description} />
         <meta property="og:description" content={description} />
