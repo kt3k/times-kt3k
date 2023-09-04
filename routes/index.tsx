@@ -29,17 +29,14 @@ export default async function Home(_req: Request, _ctx: RouteContext) {
   return (
     <>
       <Head>
-        <title>{SITE_NAME}</title>
-        <meta property="og:title" content={SITE_NAME} />
+        <title>{description}</title>
+        <meta property="og:title" content={description} />
         <meta property="og:image" content={ogImage} />
         <meta property="og:image:width" content="800" />
         <meta property="og:image:height" content="418" />
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:image" content={ogImage} />
-        <meta property="twitter:title" content={SITE_NAME} />
-        <meta property="twitter:description" content={description} />
-        <meta property="og:description" content={description} />
-        <meta name="description" content={description} />
+        <meta property="twitter:title" content={description} />
       </Head>
       <div class="pt-3 px-7">
         #times-
