@@ -10,11 +10,13 @@ export default function App({ Component }: AppProps) {
       <Head>
         <style dangerouslySetInnerHTML={{ __html: CSS }} />
       </Head>
-      <div class="min-h-screen bg-black text-gray-100">
-        <div class="min-h-screen md:max-w-xl md:border-r-1 md:border-l-1 border-gray-700 mx-auto">
-          <Component />
+      <body class="bg-black">
+        <div class="min-h-[100svh] bg-black text-gray-100">
+          <div class="min-h-[100svh] md:max-w-xl md:border-r-1 md:border-l-1 border-gray-700 mx-auto">
+            <Component />
+          </div>
         </div>
-      </div>
+      </body>
     </>
   );
 }
