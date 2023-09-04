@@ -22,7 +22,7 @@ const defaultResponse = new Response(ogImageU8, { headers: imageHeader });
 
 export async function handler(req: Request, ctx: RouteContext) {
   if (req.headers.get("if-none-match")?.includes(sharedEtag)) {
-    return new Response("", { status: 304 });
+    return new Response(null, { status: 304 });
   }
   try {
     await Deno.lstat(`tl/${ctx.params[0]}/image.png`);
