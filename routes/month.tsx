@@ -9,9 +9,9 @@ import Footer from "components/footer.tsx";
 import { SITE_NAME } from "util/const.ts";
 
 export default async function Month(req: Request, ctx: RouteContext) {
-  const posts = await getPostsForMonth(ctx.params[0]);
-  const month = formatMonthId(ctx.params[0]);
-  const ogImage = `https://times.kt3k.org/og-image.png`;
+  const monthId = ctx.params[0];
+  const posts = await getPostsForMonth(monthId);
+  const month = formatMonthId(monthId);
   const description = `${month} / ${SITE_NAME}}`;
   return (
     <>
@@ -19,11 +19,11 @@ export default async function Month(req: Request, ctx: RouteContext) {
         <title>{month} / {SITE_NAME}</title>
         <title>{SITE_NAME}</title>
         <meta property="og:title" content={SITE_NAME} />
-        <meta property="og:image" content={ogImage} />
+        <meta property="og:image" content={`/${monthId}.png`} />
         <meta property="og:image:width" content="800" />
         <meta property="og:image:height" content="418" />
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:image" content={ogImage} />
+        <meta property="twitter:image" content={`/${monthId}.png`} />
         <meta property="twitter:title" content={SITE_NAME} />
         <meta property="twitter:description" content={description} />
         <meta property="og:description" content={description} />
@@ -33,6 +33,8 @@ export default async function Month(req: Request, ctx: RouteContext) {
         <a class="hover:underline" href={`/`}>Home</a> / {month}
       </div>
       <hr class="mt-3 border-gray-700" />
+      <img src={`/${monthId}.png`} />
+      <hr class="border-gray-700" />
       <div class="">
         {posts.map((post) => (
           <div class="mt-4">

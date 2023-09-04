@@ -59,7 +59,9 @@ export async function getPost(
 export async function getPostsForMonth(month: string): Promise<Post[]> {
   const promises = [];
   for await (const entry of Deno.readDir(join("tl", month))) {
-    promises.push(getPost(month, entry.name));
+    if (entry.name.endsWith(".md")) {
+      promises.push(getPost(month, entry.name));
+    }
   }
   const posts_ = await Promise.all(promises);
   const posts = posts_.filter((post) => post !== null) as Post[];

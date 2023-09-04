@@ -2,7 +2,6 @@
 
 import { Temporal, type ZonedDateTime } from "esm/@js-temporal/polyfill@0.4.4";
 import { authors, Post } from "util/post.ts";
-import { render } from "x/gfm@0.2.5/mod.ts";
 
 export default function Post(opts: { post: Post; permalink?: boolean }) {
   const { post, permalink } = opts;

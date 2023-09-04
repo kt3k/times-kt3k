@@ -9,24 +9,24 @@ import Footer from "components/footer.tsx";
 import { SITE_NAME } from "util/const.ts";
 
 export default async function Permalink(_req: Request, ctx: RouteContext) {
-  const id = ctx.params[0] + ctx.params[1];
+  const monthId = ctx.params[0];
+  const id = monthId + ctx.params[1];
   const post = await getPostById(id);
   if (!post) {
     return <div>404 ({id})</div>;
   }
   const text = post.html.replace(/<[^>]+>/g, "").trim();
   const description = `${post.author}: "${text}"`;
-  const ogImage = `https://times.kt3k.org/og-image.png`;
   return (
     <>
       <Head>
         <title>{description} / {SITE_NAME}</title>
         <meta property="og:title" content={SITE_NAME} />
-        <meta property="og:image" content={ogImage} />
+        <meta property="og:image" content={`/${monthId}.png`} />
         <meta property="og:image:width" content="800" />
         <meta property="og:image:height" content="418" />
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:image" content={ogImage} />
+        <meta property="twitter:image" content={`/${monthId}.png`} />
         <meta property="twitter:title" content={SITE_NAME} />
         <meta property="twitter:description" content={description} />
         <meta property="og:description" content={description} />
@@ -36,12 +36,14 @@ export default async function Permalink(_req: Request, ctx: RouteContext) {
         <a class="hover:underline" href={`/`}>Home</a> /{" "}
         <a
           class="hover:underline"
-          href={`/${ctx.params[0]}`}
+          href={`/${monthId}`}
         >
-          {formatMonthId(ctx.params[0])}
+          {formatMonthId(monthId)}
         </a>
       </div>
       <hr class="mt-3 border-gray-700" />
+      <img src={`/${monthId}.png`} />
+      <hr class="border-gray-700" />
       <div class="pt-4">
         <Post post={post} permalink />
         <hr class="mt-3 border-gray-700" />
