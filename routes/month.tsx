@@ -12,7 +12,7 @@ export default async function Month(req: Request, ctx: RouteContext) {
   const monthId = ctx.params[0];
   const posts = await getPostsForMonth(monthId);
   const month = formatMonthId(monthId);
-  const description = `${month} / ${SITE_NAME}}`;
+  const description = `${month} / ${SITE_NAME}`;
   const ogImage = `https://times.kt3k.org/${monthId}.png`;
   return (
     <>
