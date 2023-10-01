@@ -88,10 +88,10 @@ export function getThisMonthId() {
   return n.year + n.month.toString().padStart(2, "0");
 }
 
-export function getThisMonthPosts() {
+export async function getThisMonthPosts() {
   const id = getThisMonthId();
   try {
-    return getPostsForMonth(id);
+    return await getPostsForMonth(id);
   } catch {
     return [];
   }
