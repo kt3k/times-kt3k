@@ -20,4 +20,4 @@ Node.js のバージョンを 18.9 から 18.16 に追従したという内容�
 
 かなり似てる [issue](https://github.com/nodejs/node/issues/46765) とそれの [fix](https://github.com/nodejs/node/pull/46818) が見つかる。-> fix を試しに Deno に入れてみる -> 現象が直った 🎉
 
-とりあえず、直し方は分かったものの、なぜこれで直るのかはいまいち分かってない。Node.js 側の [issue](https://github.com/nodejs/node/issues/46765) でも、こうやったら直った/上手くいったみたいな trial and error の繰り返しで手探りで解を探しているように見える (実装の中身に対する分析がされていない) ので、おそらく誰も理解していないのではないかという気がしている。
+とりあえず、直し方は分かったものの、なぜこれで直るのかはいまいち分かってない。Node.js 側の [issue](https://github.com/nodejs/node/issues/46765) でも、こうやったら直った/上手くいったみたいな trial and error の繰り返しで手探りで解を探しているように見える (実装の中身に対する分析がされていない) ので、おそらく誰も理解していないのではないかという気がしている。(よくみると [Ben](https://github.com/bnoordhuis) が、construct 周りで 3回も nextTick してるけど、それは意図的か? という[疑問](https://github.com/nodejs/node/pull/46818#issuecomment-1444775786)を呈している。
