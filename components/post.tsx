@@ -40,7 +40,7 @@ export default function Post(opts: { post: Post; permalink?: boolean }) {
             style="--color-accent-fg: #60a5fa; --color-canvas-default: xx"
             data-color-mode="dark"
             data-dark-theme="dark"
-            class="break-all markdown-body"
+            class="break-words markdown-body"
             dangerouslySetInnerHTML={{ __html: post.html }}
           />
         </section>
