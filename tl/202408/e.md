@@ -2,7 +2,7 @@
 date: 2024-08-23T03:15:11.073911042+00:00[UTC]
 author: kt3k
 ---
-[cell](https://github.com/kt3k/cell)の `on` ヘルパーのインターフェースを
+[cell](https://github.com/kt3k/cell) の `on` ヘルパーのインターフェースを
 
 ```ts
 on.click = (e: Event) => {}
