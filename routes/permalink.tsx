@@ -8,6 +8,8 @@ import Post from "components/post.tsx";
 import Footer from "components/footer.tsx";
 import { SITE_NAME } from "util/const.ts";
 
+const SNIPPET_MAX = 30;
+
 export default async function Permalink(_req: Request, ctx: RouteContext) {
   const monthId = ctx.params[0];
   const id = monthId + ctx.params[1];
@@ -17,12 +19,19 @@ export default async function Permalink(_req: Request, ctx: RouteContext) {
   }
   const text = post.html.replace(/<[^>]+>/g, "").trim();
   const description = `${post.author}: "${text}"`;
+  const chars = [...text];
+  let snippet: string;
+  if (chars.length > SNIPPET_MAX) {
+    snippet = chars.slice(0, SNIPPET_MAX).join("") + "...";
+  } else {
+    snippet = chars.join("");
+  }
   const ogImage = `https://times.kt3k.org/${monthId}.png`;
   return (
     <>
       <Head>
-        <title>{description} / {SITE_NAME}</title>
-        <meta property="og:title" content={description} />
+        <title>{snippet} | {SITE_NAME}</title>
+        <meta property="og:title" content={`${snippet} | ${SITE_NAME}`} />
         <meta property="og:image" content={ogImage} />
         <meta property="og:image:width" content="800" />
         <meta property="og:image:height" content="418" />
