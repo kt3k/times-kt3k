@@ -2,26 +2,28 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
-import * as $0 from "./routes/_404.tsx";
-import * as $1 from "./routes/_app.tsx";
-import * as $2 from "./routes/archive.tsx";
-import * as $3 from "./routes/index.tsx";
-import * as $4 from "./routes/month.tsx";
-import * as $5 from "./routes/og_image.ts";
-import * as $6 from "./routes/permalink.tsx";
+import * as $_404 from "./routes/_404.tsx";
+import * as $_app from "./routes/_app.tsx";
+import * as $archive from "./routes/archive.tsx";
+import * as $index from "./routes/index.tsx";
+import * as $month from "./routes/month.tsx";
+import * as $og_image from "./routes/og_image.ts";
+import * as $permalink from "./routes/permalink.tsx";
+
+import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
-    "./routes/_404.tsx": $0,
-    "./routes/_app.tsx": $1,
-    "./routes/archive.tsx": $2,
-    "./routes/index.tsx": $3,
-    "./routes/month.tsx": $4,
-    "./routes/og_image.ts": $5,
-    "./routes/permalink.tsx": $6,
+    "./routes/_404.tsx": $_404,
+    "./routes/_app.tsx": $_app,
+    "./routes/archive.tsx": $archive,
+    "./routes/index.tsx": $index,
+    "./routes/month.tsx": $month,
+    "./routes/og_image.ts": $og_image,
+    "./routes/permalink.tsx": $permalink,
   },
   islands: {},
   baseUrl: import.meta.url,
-};
+} satisfies Manifest;
 
 export default manifest;

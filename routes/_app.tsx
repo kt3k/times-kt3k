@@ -2,7 +2,7 @@
 
 import { Head } from "fresh/runtime.ts";
 import { AppProps } from "fresh/server.ts";
-import { CSS } from "x/gfm@0.2.5/mod.ts";
+import { CSS } from "@deno/gfm";
 
 export default function App({ Component }: AppProps) {
   return (

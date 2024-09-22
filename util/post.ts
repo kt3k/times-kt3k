@@ -3,8 +3,8 @@
 import { extract } from "std/front_matter/yaml.ts";
 import { join } from "std/path/mod.ts";
 import { Temporal } from "esm/@js-temporal/polyfill@0.4.4";
-import authors_ from "../authors.json" assert { type: "json" };
-import { render } from "x/gfm@0.2.5/mod.ts";
+import authors_ from "../authors.json" with { type: "json" };
+import { render } from "@deno/gfm";
 import { encode } from "x/bijective_base_n@v0.1.0/mod.ts";
 
 const alphabet = "abcdefghjkmnpqrstuvwxyz";
