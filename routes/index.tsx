@@ -25,7 +25,6 @@ export default async function Home(_req: Request, _ctx: RouteContext) {
   }
   const monthsSorted = months.toSorted().toReversed();
   const monthsToDisplay = monthsSorted.slice(0, 3);
-  const monthsArchived = monthsSorted.slice(3);
   const posts = await getPostsForMonths(monthsToDisplay);
   const ogImage = `https://times.kt3k.org/og-image.png`;
   const description = `HOME / ${SITE_NAME}`;
@@ -43,7 +42,7 @@ export default async function Home(_req: Request, _ctx: RouteContext) {
       </Head>
       <div class="pt-3 px-7 flex justify-between">
         <a href="/">#times-kt3k</a>
-        <a class="text-gray-400 text-sm" href="/archive">archive</a>
+        <a class="text-gray-400 text-sm" href="/archive">Archive</a>
       </div>
       <hr class="mt-3 border-gray-700" />
       {posts.map(([month, posts]) => (
@@ -64,27 +63,10 @@ export default async function Home(_req: Request, _ctx: RouteContext) {
         </>
       ))}
       <div class="text-center py-4 text-sm text-gray-400">
-        ・<br />
-        Archives<br />
-        ・<br />
+        <a href="/archive" class="text-gray-400">Archive</a>
+        <br />
       </div>
       <hr class="border-gray-700" />
-      {monthsArchived.map((month) => (
-        <>
-          <div class="text-sm text-gray-400 flex gap-6 items-center">
-            <img
-              class="w-1/2 border-r-1 border-gray-700"
-              src={`/${month}.png`}
-            />
-            <div class="text-center w-1/2">
-              <a class="hover:underline" href={`/${month}`}>
-                {formatMonthId(month)}
-              </a>
-            </div>
-          </div>
-          <hr class="border-gray-700" />
-        </>
-      ))}
       <div class="fixed bottom-0 w-screen md:max-w-xl mx-auto h-[100svh] pointer-events-none">
         <a
           class="absolute pointer-events-auto w-[50px] h-[50px] bg-blue-600 flex items-center justify-center rounded-full bottom-12 right-5 shadow-xl shadow-white font-light"
