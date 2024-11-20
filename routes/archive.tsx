@@ -2,12 +2,9 @@
 
 import { RouteContext } from "fresh/server.ts";
 import { Head } from "fresh/runtime.ts";
-import { getPostsForMonths } from "util/post.ts";
 import { formatMonthId } from "util/date.ts";
-import Post from "components/post.tsx";
 import Footer from "components/footer.tsx";
 import { SITE_NAME } from "util/const.ts";
-import { Temporal } from "esm/@js-temporal/polyfill@0.4.4";
 
 export default async function Home(_req: Request, _ctx: RouteContext) {
   const months = [];
