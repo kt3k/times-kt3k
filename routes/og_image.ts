@@ -18,8 +18,6 @@ const sharedEtag = `"${
 
 const imageHeader = { "Content-Type": "image/png", "Etag": sharedEtag };
 
-const defaultResponse = new Response(ogImageU8, { headers: imageHeader });
-
 export async function handler(req: Request, ctx: RouteContext) {
   if (req.headers.get("if-none-match")?.includes(sharedEtag)) {
     return new Response(null, { status: 304 });
@@ -32,7 +30,7 @@ export async function handler(req: Request, ctx: RouteContext) {
     );
   } catch {
     // fallback to default og-image
-    return defaultResponse;
+    return new Response(ogImageU8, { headers: imageHeader });
   }
 }
 export const config: RouteConfig = {
