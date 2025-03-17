@@ -1,7 +1,8 @@
 // Copyright 2023 Yoshiya Hinosawa. All rights reserved. MIT license.
+// deno-lint-ignore-file react-no-danger
 
-import { Temporal, type ZonedDateTime } from "esm/@js-temporal/polyfill@0.4.4";
-import { authors, Post } from "util/post.ts";
+import { Temporal } from "@js-temporal/polyfill";
+import { authors, type Post } from "util/post.ts";
 
 export default function Post(opts: { post: Post; permalink?: boolean }) {
   const { post, permalink } = opts;
@@ -49,7 +50,7 @@ export default function Post(opts: { post: Post; permalink?: boolean }) {
   );
 }
 
-function smart(date: ZonedDateTime): string {
+function smart(date: Temporal.ZonedDateTime): string {
   const d = date.until(Temporal.Now.zonedDateTimeISO());
   if (d.total("day") > 2) {
     return date.toLocaleString("en-US", {
@@ -71,7 +72,7 @@ function smart(date: ZonedDateTime): string {
   return "now";
 }
 
-function formatDate(date: ZonedDateTime) {
+function formatDate(date: Temporal.ZonedDateTime) {
   return date.toLocaleString("en-US", {
     dateStyle: "medium",
     timeStyle: "short",

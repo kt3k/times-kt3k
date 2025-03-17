@@ -8,7 +8,7 @@ import Post from "components/post.tsx";
 import Footer from "components/footer.tsx";
 import { SITE_NAME } from "util/const.ts";
 
-export default async function Month(req: Request, ctx: RouteContext) {
+export default async function Month(_req: Request, ctx: RouteContext) {
   const monthId = ctx.params[0];
   const posts = await getPostsForMonth(monthId);
   const month = formatMonthId(monthId);

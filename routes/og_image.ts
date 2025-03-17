@@ -1,12 +1,12 @@
 // Copyright 2023 Yoshiya Hinosawa. All rights reserved. MIT license.
 
 import { RouteConfig, RouteContext } from "fresh/server.ts";
-import { encode } from "std/encoding/base64.ts";
+import { encodeBase64 } from "@std/encoding/base64";
 
 const ogImageU8 = await Deno.readFile("static/og-image.png");
 
 const sharedEtag = `"${
-  encode(
+  encodeBase64(
     new Uint8Array(
       await crypto.subtle.digest(
         "SHA-256",

@@ -1,6 +1,6 @@
 // Copyright 2023 Yoshiya Hinosawa. All rights reserved. MIT license.
 
-import { Temporal } from "esm/@js-temporal/polyfill@0.4.4";
+import { Temporal } from "@js-temporal/polyfill";
 
 export function formatMonthId(string: string): string {
   const match = string.match(/(\d{4})(\d{2})/);

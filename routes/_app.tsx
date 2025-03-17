@@ -1,4 +1,5 @@
 // Copyright 2023 Yoshiya Hinosawa. All rights reserved. MIT license.
+// deno-lint-ignore-file react-no-danger
 
 import { Head } from "fresh/runtime.ts";
 import { AppProps } from "fresh/server.ts";

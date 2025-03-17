@@ -13,7 +13,7 @@ import { formatMonthId } from "util/date.ts";
 import Post from "components/post.tsx";
 import Footer from "components/footer.tsx";
 import { SITE_NAME } from "util/const.ts";
-import { Temporal } from "esm/@js-temporal/polyfill@0.4.4";
+import { Temporal } from "@js-temporal/polyfill";
 
 export default async function Home(_req: Request, _ctx: RouteContext) {
   const thisMonthId = getThisMonthId();
