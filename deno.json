@@ -8,6 +8,11 @@
     "preview": "deno run -A main.ts"
   },
   "lint": { "rules": { "tags": ["fresh", "recommended"] } },
+  "fmt": {
+    "exclude": [
+      "tl"
+    ]
+  },
   "imports": {
     "$fresh/": "https://deno.land/x/fresh@1.7.1/",
     "@deno/gfm": "jsr:@deno/gfm@^0.9.0",
