@@ -69,7 +69,7 @@ export default async function Home(_req: Request, _ctx: RouteContext) {
       <hr class="border-gray-700" />
       <div class="fixed bottom-0 w-screen md:max-w-xl mx-auto h-[100svh] pointer-events-none">
         <a
-          class="absolute pointer-events-auto w-[50px] h-[50px] bg-blue-600 flex items-center justify-center rounded-full bottom-12 right-5 shadow-xl shadow-white font-light"
+          class="absolute pointer-events-auto w-[50px] h-[50px] bg-blue-600 flex items-center justify-center rounded-full bottom-12 right-5 shadow-md shadow-white font-light"
           target="_blank"
           href={`https://github.com/kt3k/times-kt3k/new/main/tl/${thisMonthId}?filename=${nextFileName}&value=${
             encodeURIComponent(
