@@ -1,5 +1,6 @@
 .env
-.DS_Store
 
 # Fresh build directory
 _fresh/
+
+node_modules

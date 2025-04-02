@@ -1,5 +1,6 @@
 {
   "lock": false,
+  "nodeModulesDir": "auto",
   "tasks": {
     "start": "deno run -A --watch=static/,routes/ dev.ts",
     "update": "deno run -A -r https://fresh.deno.dev/update .",
@@ -11,14 +12,12 @@
   "fmt": { "exclude": ["tl"] },
   "imports": {
     "$fresh/": "https://deno.land/x/fresh@1.7.3/",
-    "fresh/": "https://deno.land/x/fresh@1.7.1/",
     "preact": "https://esm.sh/preact@10.22.0",
     "preact-render-to-string": "https://esm.sh/*preact-render-to-string@6.2.0",
     "preact/": "https://esm.sh/preact@10.22.0/",
     "@preact/signals": "https://esm.sh/*@preact/signals@1.2.2",
     "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.5.1",
-    "twind": "https://esm.sh/twind@0.16.19",
-    "twind/": "https://esm.sh/twind@0.16.19/",
+    "tailwindcss": "npm:tailwindcss@3.4.1",
     "@std/dotenv": "jsr:@std/dotenv@^0.225.3",
     "@std/encoding": "jsr:@std/encoding@^1.0.7",
     "@std/front-matter": "jsr:@std/front-matter@^1.0.9",

@@ -1,7 +1,7 @@
 // Copyright 2023 Yoshiya Hinosawa. All rights reserved. MIT license.
 
-import { RouteContext } from "fresh/server.ts";
-import { Head } from "fresh/runtime.ts";
+import { type RouteContext } from "$fresh/server.ts";
+import { Head } from "$fresh/runtime.ts";
 import {
   defaultPost,
   getNextFileName,

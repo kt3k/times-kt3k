@@ -1,6 +1,6 @@
 // Copyright 2023 Yoshiya Hinosawa. All rights reserved. MIT license.
 
-import { Head } from "fresh/runtime.ts";
+import { Head } from "$fresh/runtime.ts";
 
 export default function Error404() {
   return (

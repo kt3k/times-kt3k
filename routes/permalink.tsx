@@ -1,7 +1,7 @@
 // Copyright 2023 Yoshiya Hinosawa. All rights reserved. MIT license.
 
-import { RouteConfig, RouteContext } from "fresh/server.ts";
-import { Head } from "fresh/runtime.ts";
+import type { RouteConfig, RouteContext } from "$fresh/server.ts";
+import { Head } from "$fresh/runtime.ts";
 import { getPostById } from "util/post.ts";
 import { formatMonthId } from "util/date.ts";
 import Post from "components/post.tsx";

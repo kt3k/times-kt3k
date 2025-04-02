@@ -1,6 +1,6 @@
 // Copyright 2023 Yoshiya Hinosawa. All rights reserved. MIT license.
 
-import { RouteConfig, RouteContext } from "fresh/server.ts";
+import type { RouteConfig, RouteContext } from "$fresh/server.ts";
 import { encodeBase64 } from "@std/encoding/base64";
 
 const ogImageU8 = await Deno.readFile("static/og-image.png");

@@ -1,7 +1,7 @@
 // Copyright 2023 Yoshiya Hinosawa. All rights reserved. MIT license.
 
-import { RouteContext } from "fresh/server.ts";
-import { Head } from "fresh/runtime.ts";
+import { type RouteContext } from "$fresh/server.ts";
+import { Head } from "$fresh/runtime.ts";
 import { formatMonthId } from "util/date.ts";
 import Footer from "components/footer.tsx";
 import { SITE_NAME } from "util/const.ts";
@@ -11,7 +11,6 @@ export default async function Home(_req: Request, _ctx: RouteContext) {
   for await (const item of Deno.readDir("tl")) {
     months.push(item.name);
   }
-  console.log(months);
   const monthsToDisplay = months.toSorted().toReversed();
   const ogImage = `https://times.kt3k.org/og-image.png`;
   const description = `HOME / ${SITE_NAME}`;
@@ -35,7 +34,7 @@ export default async function Home(_req: Request, _ctx: RouteContext) {
         <>
           <div class="text-sm text-gray-400 flex gap-6 items-center">
             <img
-              class="w-1/2 border-r-1 border-gray-700"
+              class="w-1/2 border-r border-gray-700"
               src={`/${month}.png`}
             />
             <div class="text-center w-1/2">
