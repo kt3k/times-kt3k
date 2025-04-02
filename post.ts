@@ -2,7 +2,7 @@
 
 import { ensureDir } from "std/fs/ensure_dir.ts";
 import { join } from "std/path/mod.ts";
-import "std/dotenv/load.ts";
+import "@std/dotenv/load";
 import { Temporal } from "@js-temporal/polyfill";
 import {
   defaultPost,

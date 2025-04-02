@@ -32,6 +32,7 @@
     "@js-temporal/polyfill": "npm:@js-temporal/polyfill@^0.4.4",
     "@kt3k/bijective-number": "jsr:@kt3k/bijective-number@^0.2.2",
 
+    "@std/dotenv": "jsr:@std/dotenv@^0.225.3",
     "@std/encoding": "jsr:@std/encoding@^1.0.7",
     "std/": "https://deno.land/std@0.201.0/",
 
