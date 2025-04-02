@@ -1,7 +1,7 @@
 // Copyright 2023 Yoshiya Hinosawa. All rights reserved. MIT license.
 
-import { ensureDir } from "std/fs/ensure_dir.ts";
-import { join } from "std/path/mod.ts";
+import { ensureDir } from "@std/fs/ensure-dir";
+import { join } from "@std/path";
 import "@std/dotenv/load";
 import { Temporal } from "@js-temporal/polyfill";
 import {

@@ -1,7 +1,7 @@
 // Copyright 2023 Yoshiya Hinosawa. All rights reserved. MIT license.
 
-import { extract } from "std/front_matter/yaml.ts";
-import { join } from "std/path/mod.ts";
+import { extract } from "@std/front-matter/yaml";
+import { join } from "@std/path/join";
 import { Temporal } from "@js-temporal/polyfill";
 import authors_ from "../authors.json" with { type: "json" };
 import { render } from "@deno/gfm";
