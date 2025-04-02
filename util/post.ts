@@ -5,7 +5,7 @@ import { join } from "std/path/mod.ts";
 import { Temporal } from "@js-temporal/polyfill";
 import authors_ from "../authors.json" with { type: "json" };
 import { render } from "@deno/gfm";
-import { encode } from "x/bijective_base_n@v0.1.0/mod.ts";
+import { encode } from "@kt3k/bijective-number";
 
 const alphabet = "abcdefghjkmnpqrstuvwxyz";
 
