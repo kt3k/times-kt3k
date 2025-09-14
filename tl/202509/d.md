@@ -4,4 +4,4 @@ author: kt3k
 ---
 frontend の signal, js の reference 経由で渡すんじゃなくて、string を key とした独自 namespace 経由で渡す方が嬉しいかも知れない。
 
-js の reference 経由渡しだと、そこの依存性が強すぎてテストがしづらい
+js の reference 経由渡しだと、そこの依存性が強すぎて別コンテキストに持っていっての再利用がしづらい
