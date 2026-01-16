@@ -35,7 +35,7 @@ export default async function Home(_req: Request, _ctx: RouteContext) {
           <div class="text-sm text-gray-400 flex gap-6 items-center">
             <img
               class="w-1/2 border-r border-gray-700"
-              src={`/${month}.png`}
+              src={`/${month}.svg`}
             />
             <div class="text-center w-1/2">
               <a class="hover:underline" href={`/${month}`}>
