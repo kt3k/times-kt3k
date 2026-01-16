@@ -7,10 +7,13 @@ type Rand = {
 };
 
 export function generateSvg(rng = Math.random) {
-  const cols = 19;
-  const rows = 3;
+  const cols = 13;
+  const rows = 5;
 
   const SIZE = Math.floor(573 / cols);
+
+  const HUE = Math.floor(rng() * 360);
+  const SAT = 30 + Math.floor(rng() * 50);
 
   const width = cols * SIZE;
   const height = rows * SIZE;
@@ -33,7 +36,7 @@ export function generateSvg(rng = Math.random) {
 
   const bgshuffle = shuffle([0, 1, 2])[0];
 
-  const bg = `hsl(0, 0%, ${20 + bgshuffle * 30}%)`;
+  const bg = `hsl(${HUE}, ${SAT}%, ${20 + bgshuffle * 30}%)`;
 
   // background（#fff使わず薄グレー）
   elements.push(
@@ -64,8 +67,8 @@ export function generateSvg(rng = Math.random) {
 
         const [bg, fg] = shuffle([0, 1, 2]);
 
-        const bgColor = `hsl(0, 0%, ${20 + bg * 30}%)`;
-        const color = `hsl(0, 0%, ${20 + fg * 30}%)`;
+        const bgColor = `hsl(${HUE}, ${SAT}%, ${20 + bg * 30}%)`;
+        const color = `hsl(${HUE}, ${SAT}%, ${20 + fg * 30}%)`;
         const size = SIZE * 0.57;
 
         rand = cache[`${r}-${c}`] = { draw, isCircle, color, bgColor, size };

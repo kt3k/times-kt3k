@@ -30,9 +30,11 @@ function fnv1a64(str: string): bigint {
 const imageHeader = { "Content-Type": "image/svg+xml", "Etag": sharedEtag };
 
 export function handler(req: Request, ctx: RouteContext) {
+  /*
   if (req.headers.get("if-none-match")?.includes(sharedEtag)) {
     return new Response(null, { status: 304 });
   }
+    */
   const rng = randomSeeded(fnv1a64(ctx.params[0]));
   return new Response(generateSvg(rng), { headers: imageHeader });
 }
