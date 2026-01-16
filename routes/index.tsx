@@ -26,7 +26,7 @@ export default async function Home(_req: Request, _ctx: RouteContext) {
   const monthsSorted = months.toSorted().toReversed();
   const monthsToDisplay = monthsSorted.slice(0, 3);
   const posts = await getPostsForMonths(monthsToDisplay);
-  const ogImage = `https://times.kt3k.org/og-image.png`;
+  const ogImage = `https://times.kt3k.org/${thisMonthId}.png`;
   const description = `HOME / ${SITE_NAME}`;
   return (
     <>
@@ -35,7 +35,7 @@ export default async function Home(_req: Request, _ctx: RouteContext) {
         <meta property="og:title" content={description} />
         <meta property="og:image" content={ogImage} />
         <meta property="og:image:width" content="800" />
-        <meta property="og:image:height" content="418" />
+        <meta property="og:image:height" content="308" />
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:image" content={ogImage} />
         <meta property="twitter:title" content={description} />

@@ -12,6 +12,7 @@
   "fmt": { "exclude": ["tl"] },
   "imports": {
     "$fresh/": "https://deno.land/x/fresh@1.7.3/",
+    "@resvg/resvg-wasm": "npm:@resvg/resvg-wasm@^2.6.2",
     "@std/random": "jsr:@std/random@^0.1.4",
     "preact": "https://esm.sh/preact@10.22.0",
     "preact-render-to-string": "https://esm.sh/*preact-render-to-string@6.2.0",

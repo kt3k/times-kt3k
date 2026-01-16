@@ -1,3 +1,8 @@
+import { randomSeeded } from "@std/random";
+import { initWasm, Resvg } from "@resvg/resvg-wasm";
+
+await initWasm(fetch("https://unpkg.com/@resvg/resvg-wasm/index_bg.wasm"));
+
 type Rand = {
   draw: boolean;
   isCircle: boolean;
@@ -107,4 +112,33 @@ export function generateSvg(rng = Math.random) {
 `.trim();
 
   return svg;
+}
+
+function fnv1a64(str: string): bigint {
+  let hash = 0xcbf29ce484222325n;
+  const prime = 0x100000001b3n;
+
+  for (let i = 0; i < str.length; i++) {
+    hash ^= BigInt(str.charCodeAt(i));
+    hash = (hash * prime) & 0xffffffffffffffffn;
+  }
+  return hash;
+}
+
+export function monthSvg(monthId: string): string {
+  const rng = randomSeeded(fnv1a64(monthId));
+  return generateSvg(rng);
+}
+
+export function monthPng(monthId: string): Uint8Array<ArrayBuffer> {
+  const svg = monthSvg(monthId);
+  const resvg = new Resvg(svg, {
+    fitTo: {
+      mode: "width",
+      value: 800,
+    },
+    background: "white",
+  });
+  const pngData = resvg.render();
+  return pngData.asPng() as Uint8Array<ArrayBuffer>;
 }

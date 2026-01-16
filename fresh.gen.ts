@@ -5,11 +5,11 @@
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $archive from "./routes/archive.tsx";
-import * as $image from "./routes/image.ts";
 import * as $index from "./routes/index.tsx";
 import * as $month from "./routes/month.tsx";
 import * as $og_image from "./routes/og_image.ts";
 import * as $permalink from "./routes/permalink.tsx";
+import * as $svg_image from "./routes/svg_image.ts";
 
 import type { Manifest } from "$fresh/server.ts";
 
@@ -18,11 +18,11 @@ const manifest = {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
     "./routes/archive.tsx": $archive,
-    "./routes/image.ts": $image,
     "./routes/index.tsx": $index,
     "./routes/month.tsx": $month,
     "./routes/og_image.ts": $og_image,
     "./routes/permalink.tsx": $permalink,
+    "./routes/svg_image.ts": $svg_image,
   },
   islands: {},
   baseUrl: import.meta.url,
