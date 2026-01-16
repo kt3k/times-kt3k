@@ -13,7 +13,7 @@ export function generateSvg(rng = Math.random) {
   const SIZE = Math.floor(573 / cols);
 
   const HUE = Math.floor(rng() * 360);
-  const SAT = 30 + Math.floor(rng() * 50);
+  const SAT = Math.floor(rng() * 2) * 30;
 
   const width = cols * SIZE;
   const height = rows * SIZE;
@@ -74,13 +74,14 @@ export function generateSvg(rng = Math.random) {
         rand = cache[`${r}-${c}`] = { draw, isCircle, color, bgColor, size };
       }
 
-      if (!rand.draw) continue;
-
+      const bgColor = rand.draw ? rand.bgColor : bg;
       elements.push(
-        `<rect x="${cx - SIZE / 2}" y="${
-          cy - SIZE / 2
-        }" width="${SIZE}" height="${SIZE}" fill="${rand.bgColor}" />`,
+        `<rect x="${cx - SIZE / 2}" y="${cy - SIZE / 2}" width="${
+          SIZE + 1
+        }" height="${SIZE + 1}" fill="${bgColor}" />`,
       );
+
+      if (!rand.draw) continue;
       const size = rand.size;
 
       if (rand.isCircle) {
