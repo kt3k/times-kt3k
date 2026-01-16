@@ -49,7 +49,7 @@ export default async function Permalink(_req: Request, ctx: RouteContext) {
         </a>
       </div>
       <hr class="mt-3 border-gray-700" />
-      <img src={`/${monthId}.png`} />
+      <img src={`/${monthId}.svg`} />
       <hr class="border-gray-700" />
       <div class="pt-4">
         <Post post={post} permalink />

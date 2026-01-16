@@ -2,7 +2,7 @@
   "lock": false,
   "nodeModulesDir": "auto",
   "tasks": {
-    "start": "deno run -A --watch=static/,routes/ dev.ts",
+    "dev": "deno run -A --watch=static/,routes/ dev.ts",
     "update": "deno run -A -r https://fresh.deno.dev/update .",
     "post": "deno run -A post.ts",
     "build": "deno run -A dev.ts build",
@@ -12,6 +12,7 @@
   "fmt": { "exclude": ["tl"] },
   "imports": {
     "$fresh/": "https://deno.land/x/fresh@1.7.3/",
+    "@std/random": "jsr:@std/random@^0.1.4",
     "preact": "https://esm.sh/preact@10.22.0",
     "preact-render-to-string": "https://esm.sh/*preact-render-to-string@6.2.0",
     "preact/": "https://esm.sh/preact@10.22.0/",

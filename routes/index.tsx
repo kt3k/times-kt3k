@@ -47,7 +47,7 @@ export default async function Home(_req: Request, _ctx: RouteContext) {
       <hr class="mt-3 border-gray-700" />
       {posts.map(([month, posts]) => (
         <>
-          <img src={`/${month}.png`} />
+          <img src={`/${month}.svg`} />
           <hr class="border-gray-700" />
           <div class="pt-3 px-4 text-sm text-gray-400">
             <a class="hover:underline" href={`/${month}`}>
