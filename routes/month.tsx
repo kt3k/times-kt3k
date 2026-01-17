@@ -20,8 +20,8 @@ export default async function Month(_req: Request, ctx: RouteContext) {
         <title>{description}</title>
         <meta property="og:title" content={description} />
         <meta property="og:image" content={ogImage} />
-        <meta property="og:image:width" content="800" />
-        <meta property="og:image:height" content="418" />
+        <meta property="og:image:width" content="1600" />
+        <meta property="og:image:height" content="847" />
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:image" content={ogImage} />
         <meta property="twitter:title" content={description} />
