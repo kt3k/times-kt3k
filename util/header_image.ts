@@ -1,5 +1,6 @@
 import { randomSeeded } from "@std/random";
 import { initWasm, Resvg } from "@resvg/resvg-wasm";
+import { random } from "jsr:@denosaurs/emoji@0.3";
 
 await initWasm(fetch("https://unpkg.com/@resvg/resvg-wasm/index_bg.wasm"));
 
@@ -12,24 +13,6 @@ type Rand = {
 };
 
 export function generateSvg(rng = Math.random) {
-  const cols = 13;
-  const rows = 5;
-
-  const SIZE = Math.floor(573 / cols);
-
-  const HUE = Math.floor(rng() * 360);
-  const SAT = Math.floor(rng() * 2) * 30;
-
-  const width = cols * SIZE;
-  const height = rows * SIZE;
-  const cellW = SIZE;
-  const cellH = SIZE;
-
-  let i = 0;
-  const cache: Record<string, Rand> = {};
-
-  const elements = [];
-
   // Fisher-Yates shuffle
   const shuffle = <T>(array: T[]) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -38,6 +21,27 @@ export function generateSvg(rng = Math.random) {
     }
     return array;
   };
+
+  const cols = 17;
+  const rows = 9;
+
+  const SIZE = Math.floor(573 / cols);
+
+  const HUE = Math.floor(rng() * 360);
+  const SAT = Math.floor(rng() * 2) * 30;
+
+  const width = cols * SIZE;
+  const height = rows * SIZE;
+  const [RPHASE, CPHASE] = shuffle([2, 3, 5, 6]).slice(0, 2);
+  const ROFFSET = -Math.floor(rows / 2);
+  const COFFSET = -Math.floor(cols / 2);
+  const cellW = SIZE;
+  const cellH = SIZE;
+
+  let i = 0;
+  const cache: Record<string, Rand> = {};
+
+  const elements = [];
 
   const bgshuffle = shuffle([0, 1, 2])[0];
 
@@ -49,6 +53,8 @@ export function generateSvg(rng = Math.random) {
   );
 
   for (let r = 0; r < rows; r++) {
+    const rphase = triangleWave(r + ROFFSET, RPHASE);
+    console.log("r:", r, "rphase:", rphase);
     for (let c = 0; c < cols; c++) {
       const x0 = c * cellW;
       const y0 = r * cellH;
@@ -56,15 +62,11 @@ export function generateSvg(rng = Math.random) {
       const cx = x0 + cellW / 2;
       const cy = y0 + cellH / 2;
 
-      let rand: Rand;
+      const cphase = triangleWave(c + COFFSET, CPHASE);
 
-      if (r >= rows / 2 && c >= cols / 2) {
-        rand = cache[`${rows - r - 1}-${cols - c - 1}`];
-      } else if (r >= rows / 2) {
-        rand = cache[`${rows - r - 1}-${c}`];
-      } else if (c >= cols / 2) {
-        rand = cache[`${r}-${cols - c - 1}`];
-      } else {
+      let rand: Rand = cache[`${rphase}-${cphase}`];
+
+      if (!rand) {
         const draw = rng() < 0.8;
         if (draw) i++;
 
@@ -76,7 +78,13 @@ export function generateSvg(rng = Math.random) {
         const color = `hsl(${HUE}, ${SAT}%, ${20 + fg * 30}%)`;
         const size = SIZE * 0.57;
 
-        rand = cache[`${r}-${c}`] = { draw, isCircle, color, bgColor, size };
+        rand = cache[`${rphase}-${cphase}`] = {
+          draw,
+          isCircle,
+          color,
+          bgColor,
+          size,
+        };
       }
 
       const bgColor = rand.draw ? rand.bgColor : bg;
@@ -114,6 +122,21 @@ export function generateSvg(rng = Math.random) {
   return svg;
 }
 
+/** Returns x modulo m */
+export function modulo(x: number, m: number): number {
+  const r = x % m;
+  return r >= 0 ? r : r + m;
+}
+
+function triangleWave(x: number, length: number): number {
+  const cycle = length * 2 - 2;
+  x = modulo(x, cycle);
+  if (x < length) {
+    return x;
+  }
+  return cycle - x;
+}
+
 function fnv1a64(str: string): bigint {
   let hash = 0xcbf29ce484222325n;
   const prime = 0x100000001b3n;
@@ -135,7 +158,7 @@ export function monthPng(monthId: string): Uint8Array<ArrayBuffer> {
   const resvg = new Resvg(svg, {
     fitTo: {
       mode: "width",
-      value: 800,
+      value: 1600,
     },
     background: "white",
   });
