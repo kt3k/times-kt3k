@@ -53,7 +53,6 @@ export function generateSvg(rng = Math.random) {
 
   for (let r = 0; r < rows; r++) {
     const rphase = triangleWave(r + ROFFSET, RPHASE);
-    console.log("r:", r, "rphase:", rphase);
     for (let c = 0; c < cols; c++) {
       const x0 = c * cellW;
       const y0 = r * cellH;
