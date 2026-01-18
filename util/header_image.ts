@@ -1,6 +1,5 @@
 import { randomSeeded } from "@std/random";
 import { initWasm, Resvg } from "@resvg/resvg-wasm";
-import { random } from "jsr:@denosaurs/emoji@0.3";
 
 await initWasm(fetch("https://unpkg.com/@resvg/resvg-wasm/index_bg.wasm"));
 
@@ -25,7 +24,7 @@ export function generateSvg(rng = Math.random) {
   const cols = 17;
   const rows = 9;
 
-  const SIZE = Math.floor(573 / cols);
+  const SIZE = Math.floor(800 / cols);
 
   const HUE = Math.floor(rng() * 360);
   const SAT = Math.floor(rng() * 2) * 30;

@@ -31,21 +31,21 @@ export default async function Home(_req: Request, _ctx: RouteContext) {
       </div>
       <hr class="mt-3 border-gray-700" />
       {monthsToDisplay.map((month) => (
-        <>
-          <div class="text-sm text-gray-400 flex gap-6 items-center">
+        <div class="mt-3 text-sm text-gray-400 flex gap-6 justify-center items-center">
+          <a href={`/${month}`}>
             <img
-              class="w-1/2 border-r border-gray-700"
+              class="w-[180px]"
               src={`/${month}.svg`}
             />
-            <div class="text-center w-1/2">
-              <a class="hover:underline" href={`/${month}`}>
-                {formatMonthId(month)}
-              </a>
-            </div>
+          </a>
+          <div class="text-center">
+            <a class="hover:underline" href={`/${month}`}>
+              {formatMonthId(month)}
+            </a>
           </div>
-          <hr class="border-gray-700" />
-        </>
+        </div>
       ))}
+      <hr class="mt-6 border-gray-700" />
       <Footer />
     </>
   );
