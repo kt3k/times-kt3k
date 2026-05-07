@@ -9,6 +9,6 @@ A bold claim. I partially agree with it in a sense that coding agents can now ma
 
 However such process isn't the only part of software creation.
 
-I've been building `bw`, a 2d top down exploration game, for about 2 years. I have very picky preference about every detail of it. The process of making it is like process of paiting a large picture. I write a line of code, and get the feedback from it, and then evaluate it against my preference. Sometimes take it, and sometimes discard it just like painters removing or keeping lines while drawing.
+I've been building `bw`, a 2d top down exploration game, for about 2 years. I have very picky preference about every detail of it. The process of making it is like process of paiting a large picture. I write a line of code, and get the feedback from it, and then evaluate it against my preferences. Sometimes take it, and sometimes discard it just like painters removing or keeping lines while drawing.
 
 There are very complex and entangled correlation between code, result, and my preference. I'm almost certain nobody can make a prompt to coding agents which produces the current state of `bw`. I actually already tried that and already failed. There's too much details and the amount I needed to ask to the coding agent was very close to (or maybe more than) what I need to write in programming language.
